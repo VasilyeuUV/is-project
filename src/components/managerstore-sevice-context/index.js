@@ -1,6 +1,6 @@
 import {
   ManagerStoreServiceProvider,
   ManagerStoreServiceConsumer
-} from "./managerstore-service-context";
+} from './managerstore-sevice-context';
 
 export { ManagerStoreServiceProvider, ManagerStoreServiceConsumer };
