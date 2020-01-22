@@ -5,21 +5,21 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import App from './components/app';
 import ErrorBoundry from './components/error-boundry';
-import ManagerStoreService from './services/managerstore-service';
-import { ManagerStoreServiceProvider } from './components/managerstore-sevice-context';
+import TestService from './services/test-service';
+import { ServiceProvider } from './components/service-context';
 
 import store from './store';
 
-const managerStoreService = new ManagerStoreService();
+const selectedService = new TestService();
 
 ReactDOM.render(
   <Provider store={store}>
     <ErrorBoundry>
-      <ManagerStoreServiceProvider value={managerStoreService}>
+      <ServiceProvider value={selectedService}>
         <Router>
           <App />
         </Router>
-      </ManagerStoreServiceProvider>
+      </ServiceProvider>
     </ErrorBoundry>
   </Provider>,
   document.getElementById('root')

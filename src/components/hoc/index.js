@@ -1,3 +1,3 @@
-import withManagerStoreService from "./with-managerstore-service";
+import withStoreService from './with-store-service';
 
-export { withManagerStoreService };
+export { withStoreService };

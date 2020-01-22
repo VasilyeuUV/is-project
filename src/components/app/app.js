@@ -1,8 +1,20 @@
-import React from "react";
-import "./app.css";
+import React from 'react';
+//import {Route, Switch} from 'react-router-dom';
 
-const App = () => {
-  return <div>App</div>;
+import './app.css';
+
+import { withStoreService } from '../hoc';
+
+import PanelLeft from '../panels/panel-left/';
+import PanelMain from '../panels/panel-main/';
+
+const App = ({ storeService }) => {
+  return (
+    <main role='main' className='d-flex app'>
+      <PanelLeft />
+      <PanelMain />
+    </main>
+  );
 };
 
-export default App;
+export default withStoreService()(App);

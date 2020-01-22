@@ -1,0 +1,6 @@
+.panel-main {
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    flex-grow: 3;
+    margin: 2px;
+}

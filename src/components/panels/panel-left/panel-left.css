@@ -1,0 +1,7 @@
+.panel-left {
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    flex-grow: 3;
+    /* width: 200px !important;*/
+    margin: 2px;
+}

@@ -2,19 +2,19 @@ export default class ManagerStoreService {
   data = [
     {
       id: 1,
-      name: "Ivanov"
+      name: 'Ivanov'
     },
     {
       id: 2,
-      name: "Petrov"
+      name: 'Petrov'
     },
     {
       id: 3,
-      name: "Popov"
+      name: 'Popov'
     },
     {
       id: 4,
-      name: "Sidorov"
+      name: 'Sidorov'
     }
   ];
 
@@ -22,7 +22,7 @@ export default class ManagerStoreService {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (Math.random() > 0.75) {
-          reject(new Error("Something bad happened"));
+          reject(new Error('Something bad happened'));
         } else {
           resolve(this.data);
         }
