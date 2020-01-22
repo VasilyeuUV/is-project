@@ -12,10 +12,11 @@ import MenuListItem from '../menu-list-item';
 
 import './menu-list.css';
 
-const MenuList = ({ managers }) => {
+const MenuList = ({ items }) => {
+  console.log(items);
   return (
     <ul className='list-group'>
-      {managers.map(item => {
+      {items.map(item => {
         return (
           <li key={item.id} className='list-group-item'>
             <MenuListItem item={item} />
@@ -77,7 +78,10 @@ class MenuListContainer extends Component {
   render() {
     console.log(this.props);
 
-    const { managers, loading, error } = this.props;
+    const { loading, error } = this.props;
+    const { managers } = this.props;
+    const { products } = this.props;
+    const { clients } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -87,12 +91,21 @@ class MenuListContainer extends Component {
       return <ErrorIndicator />;
     }
 
-    return <MenuList managers={managers} />;
+    if (managers.length > 0) {
+      return <MenuList items={managers} />;
+    }
+    if (products.length > 0) {
+      return <MenuList items={products} />;
+    }
+    if (clients.length > 0) {
+      return <MenuList items={clients} />;
+    }
+    return <MenuList items={null} />;
   }
 }
 
-const mapStateToProps = ({ managers, loading, error }) => {
-  return { managers, loading, error };
+const mapStateToProps = ({ managers, products, clients, loading, error }) => {
+  return { managers, products, clients, loading, error };
 };
 
 const mapDispatchToProps = (dispatch, { storeService }) => {

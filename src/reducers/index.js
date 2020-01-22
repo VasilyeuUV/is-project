@@ -16,6 +16,8 @@ import { managerActions, productActions, clientActions } from '../_constants';
 
 const initialState = {
   managers: [],
+  products: [],
+  clients: [],
   loading: true,
   error: null
 };
@@ -25,53 +27,71 @@ const reducer = (state = initialState, action) => {
     case managerActions.request:
       return {
         managers: [],
+        products: [],
+        clients: [],
         loading: true,
         error: null
       };
     case managerActions.success:
       return {
         managers: action.payload,
+        products: [],
+        clients: [],
         loading: false,
         error: null
       };
     case managerActions.failure:
       return {
         managers: [],
+        products: [],
+        clients: [],
         loading: false,
         error: action.payload
       };
     case productActions.request:
       return {
+        managers: [],
         products: [],
+        clients: [],
         loading: true,
         error: null
       };
     case productActions.success:
       return {
+        managers: [],
         products: action.payload,
+        clients: [],
         loading: false,
         error: null
       };
     case productActions.failure:
       return {
+        managers: [],
         products: [],
+        clients: [],
         loading: false,
         error: action.payload
       };
     case clientActions.request:
       return {
+        managers: [],
+        products: [],
         clients: [],
         loading: true,
         error: null
       };
     case clientActions.success:
       return {
+        managers: [],
+        products: [],
         clients: action.payload,
         loading: false,
         error: null
       };
     case clientActions.failure:
       return {
+        managers: [],
+        products: [],
         clients: [],
         loading: false,
         error: action.payload

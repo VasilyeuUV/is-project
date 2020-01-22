@@ -23,7 +23,7 @@ const productsError = error => {
 const fetchProducts = (storeService, dispatch) => () => {
   dispatch(productsRequested());
   storeService
-    .getProducts()
+    .getProsucts()
     .then(data => dispatch(productsLoaded(data)))
     .catch(err => dispatch(productsError(err)));
 };
