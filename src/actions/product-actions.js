@@ -1,21 +1,21 @@
-import { productsActions } from '../_constants';
+import { productActions } from '../_constants';
 
 const productsRequested = () => {
   return {
-    type: productsActions.request
+    type: productActions.request
   };
 };
 
 const productsLoaded = newProducts => {
   return {
-    type: productsActions.success,
+    type: productActions.success,
     payload: newProducts
   };
 };
 
 const productsError = error => {
   return {
-    type: productsActions.failure,
+    type: productActions.failure,
     payload: error
   };
 };

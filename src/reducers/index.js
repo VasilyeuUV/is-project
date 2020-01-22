@@ -1,4 +1,4 @@
-import { managersActions } from '../_constants';
+import { managerActions } from '../_constants';
 
 const initialState = {
   managers: [],
@@ -8,19 +8,19 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case managersActions.request:
+    case managerActions.request:
       return {
         managers: [],
         loading: true,
         error: null
       };
-    case managersActions.success:
+    case managerActions.success:
       return {
         managers: action.payload,
         loading: false,
         error: null
       };
-    case managersActions.failure:
+    case managerActions.failure:
       return {
         managers: [],
         loading: false,

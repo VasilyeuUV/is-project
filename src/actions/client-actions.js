@@ -1,21 +1,21 @@
-import { clientsActions } from '../_constants';
+import { clientActions } from '../_constants';
 
 const clientsRequested = () => {
   return {
-    type: clientsActions.request
+    type: clientActions.request
   };
 };
 
 const clientsLoaded = newClients => {
   return {
-    type: clientsActions.success,
+    type: clientActions.success,
     payload: newClients
   };
 };
 
 const clientsError = error => {
   return {
-    type: clientsActions.failure,
+    type: clientActions.failure,
     payload: error
   };
 };

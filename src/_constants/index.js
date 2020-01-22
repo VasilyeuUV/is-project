@@ -1,8 +1,8 @@
 import menu from './menu-items-const';
 import {
-  managersActions,
-  productsActions,
-  clientsActions
+  managerActions,
+  productActions,
+  clientActions
 } from './action-names-const';
 
-export { menu, managersActions, productsActions, clientsActions };
+export { menu, managerActions, productActions, clientActions };

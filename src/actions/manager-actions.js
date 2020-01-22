@@ -1,21 +1,21 @@
-import { managersActions } from '../_constants';
+import { managerActions } from '../_constants';
 
 const managersRequested = () => {
   return {
-    type: managersActions.request
+    type: managerActions.request
   };
 };
 
 const managersLoaded = newManagers => {
   return {
-    type: managersActions.success,
+    type: managerActions.success,
     payload: newManagers
   };
 };
 
 const managersError = error => {
   return {
-    type: managersActions.failure,
+    type: managerActions.failure,
     payload: error
   };
 };
