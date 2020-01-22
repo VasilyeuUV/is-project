@@ -1,12 +1,11 @@
 import React from 'react';
-// import { withRouter } from 'react-router-dom';
-// import { PersonDetails, PersonList } from '../sw-components';
 
-import menu from '../../_project-constants/menu-items-const';
-import MenuList from '../menu-list';
+import { menu } from '../../_constants';
+
 import Row from '../row';
-
+import MenuList from '../menu-list';
 import SalesTable from '../sales-table';
+import SalesTotalTable from '../sales-total-table';
 
 const ManagersPage = ({ history, match }) => {
   return (
@@ -18,6 +17,7 @@ const ManagersPage = ({ history, match }) => {
       }
       left={<MenuList />}
       right={<SalesTable />}
+      down={<SalesTotalTable />}
 
       //   left={<ManagerList onItemSelected={(id) => history.push(id)} />}
       //   right={<ManagerDetails itemId={id} />}

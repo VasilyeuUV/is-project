@@ -16,10 +16,10 @@ const _menuClient = {
   names: 'Clients',
   path: '/clients/'
 };
-const Menu = {
+const menu = {
   manager: _menuManager,
   product: _menuProduct,
   client: _menuClient
 };
 
-export default Menu;
+export default menu;
