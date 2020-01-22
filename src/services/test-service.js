@@ -119,7 +119,15 @@ export default class TestService {
   // }
 
   getManagers = () => {
-    return this._managers.map(this._transformManager);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (Math.random() > 0.99) {
+          reject(new Error('Something bad happened'));
+        } else {
+          resolve(this._managers.map(this._transformManager));
+        }
+      }, 700);
+    });
   };
 
   // getManager = async id => {

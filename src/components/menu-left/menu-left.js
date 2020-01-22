@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import menu from '../../_project-constants/menu-items-const';
+import menu from '../../_constants/menu-items-const';
 
 import './menu-left.css';
 

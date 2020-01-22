@@ -1,12 +1,28 @@
 const initialState = {
-  managers: []
+  managers: [],
+  loading: true,
+  error: null
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'MANAGERS_REQUESTED':
+      return {
+        managers: [],
+        loading: true,
+        error: null
+      };
     case 'MANAGERS_LOADED':
       return {
-        managers: action.payload
+        managers: action.payload,
+        loading: false,
+        error: null
+      };
+    case 'MANAGERS_ERROR':
+      return {
+        managers: [],
+        loading: false,
+        error: action.payload
       };
 
     default:
@@ -15,15 +31,3 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
-
-// import updateManagerList from './manager-list';
-// import updateSalesTable from './sales-table';
-
-// const reducer = (state, action) => {
-//   return {
-//     managerList: updateManagerList(state, action),
-//     salesTable: updateSalesTable(state, action)
-//   };
-// };
-
-// export default reducer;

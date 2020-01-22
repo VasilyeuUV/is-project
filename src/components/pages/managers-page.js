@@ -2,6 +2,7 @@ import React from 'react';
 // import { withRouter } from 'react-router-dom';
 // import { PersonDetails, PersonList } from '../sw-components';
 
+import menu from '../../_project-constants/menu-items-const';
 import MenuList from '../menu-list';
 import Row from '../row';
 
@@ -12,7 +13,7 @@ const ManagersPage = ({ history, match }) => {
     <Row
       top={
         <div className='col-md-12'>
-          <h2>Managers</h2>
+          <h2>{menu.manager.names}</h2>
         </div>
       }
       left={<MenuList />}

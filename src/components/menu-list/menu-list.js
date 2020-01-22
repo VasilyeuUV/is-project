@@ -1,85 +1,80 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
-
-// import { withData } from '../hoc-helpers';
-// import TestService from '../../services/test-service';
-// import '.menu-list.css';
-
-// const MenuList = props => {
-//   const { data, onItemSelected, children: renderLabel } = props;
-
-//   const items = data.map(item => {
-//     const { id } = item;
-//     const label = renderLabel(item);
-
-//     return (
-//       <li
-//         className='list-group-item'
-//         key={id}
-//         onClick={() => onItemSelected(id)}
-//       >
-//         {label}
-//       </li>
-//     );
-//   });
-
-//   return <ul className='item-list list-group'>{items}</ul>;
-// };
-
-// MenuList.defaultProps = {
-//   onItemSelected: () => {}
-// };
-
-// MenuList.propTypes = {
-//   onItemSelected: PropTypes.func,
-//   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-//   children: PropTypes.func.isRequired
-// };
-
-// const { getManagers } = new TestService();
-
-// export default withData(MenuList, getManagers);
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-//import TestService from '../../services/test-service';
 import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
+import { withStoreService } from '../hoc';
+import {
+  managersLoaded,
+  managersRequested,
+  managersError
+} from '../../actions';
+import { compose } from '../../utils';
+
+import MenuListItem from '../menu-list-item';
 
 import './menu-list.css';
 
 class MenuList extends Component {
-  //currentService = new TestService();
+  componentDidMount() {
+    this.props.fetchManagers();
 
-  state = {
-    managers: null
-  };
-
-  // componentDidMount() {
-  //   this.currentService.GetManagers().then(managerList => {
-  //     this.setState({ managerList });
-  //   });
-  //}
+    // const {
+    //   storeService,
+    //   managersLoaded,
+    //   managersRequested,
+    //   managersError
+    // } = this.props;
+    // managersRequested();
+    // storeService
+    //   .getManagers()
+    //   .then(data => managersLoaded(data))
+    //   .catch(err => managersError(err));
+  }
 
   render() {
-    const { managers } = this.props;
+    const { managers, loading, error } = this.props;
 
-    if (!managers) {
+    if (loading) {
       return <Spinner />;
+    }
+
+    if (error) {
+      return <ErrorIndicator />;
     }
 
     return (
       <ul className='list-group'>
-        <li className='list-group-item'>Ivanov</li>
-        <li className='list-group-item'>Petrov</li>
-        <li className='list-group-item'>Sidorov</li>
+        {managers.map(manager => {
+          return (
+            <li key={manager.id} className='list-group-item'>
+              <MenuListItem manager={manager} />
+            </li>
+          );
+        })}
       </ul>
     );
   }
 }
 
-const mapStateToProps = ({ managers }) => {
-  return { managers };
+const mapStateToProps = ({ managers, loading, error }) => {
+  return { managers, loading, error };
 };
 
-export default connect(mapStateToProps)(MenuList);
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { storeService } = ownProps;
+  return {
+    fetchManagers: () => {
+      dispatch(managersRequested());
+      storeService
+        .getManagers()
+        .then(data => dispatch(managersLoaded(data)))
+        .catch(err => dispatch(managersError(err)));
+    }
+  };
+};
+
+export default compose(
+  withStoreService(),
+  connect(mapStateToProps, mapDispatchToProps)
+)(MenuList);

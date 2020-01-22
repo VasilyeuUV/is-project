@@ -5,4 +5,17 @@ const managersLoaded = newManagers => {
   };
 };
 
-export { managersLoaded };
+const managersRequested = () => {
+  return {
+    type: 'MANAGERS_REQUESTED'
+  };
+};
+
+const managersError = error => {
+  return {
+    type: 'MANAGERS_ERROR',
+    payload: error
+  };
+};
+
+export { managersLoaded, managersRequested, managersError };
