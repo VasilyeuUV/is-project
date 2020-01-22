@@ -20,4 +20,12 @@ const managersError = error => {
   };
 };
 
-export { managersLoaded, managersRequested, managersError };
+const fetchManagers = (storeService, dispatch) => () => {
+  dispatch(managersRequested());
+  storeService
+    .getManagers()
+    .then(data => dispatch(managersLoaded(data)))
+    .catch(err => dispatch(managersError(err)));
+};
+
+export { fetchManagers };
