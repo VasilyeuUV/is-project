@@ -1,31 +1,35 @@
-import { managersActions } from '../_constants';
+import { fetchManagers } from './manager-actions';
+import { fetchProducts } from './product-actions';
+import { fetchClients } from './client-actions';
 
-const managersRequested = () => {
-  return {
-    type: managersActions.request
-  };
-};
+// import { managersActions } from '../_constants';
 
-const managersLoaded = newManagers => {
-  return {
-    type: managersActions.success,
-    payload: newManagers
-  };
-};
+// const managersRequested = () => {
+//   return {
+//     type: managersActions.request
+//   };
+// };
 
-const managersError = error => {
-  return {
-    type: managersActions.failure,
-    payload: error
-  };
-};
+// const managersLoaded = newManagers => {
+//   return {
+//     type: managersActions.success,
+//     payload: newManagers
+//   };
+// };
 
-const fetchManagers = (storeService, dispatch) => () => {
-  dispatch(managersRequested());
-  storeService
-    .getManagers()
-    .then(data => dispatch(managersLoaded(data)))
-    .catch(err => dispatch(managersError(err)));
-};
+// const managersError = error => {
+//   return {
+//     type: managersActions.failure,
+//     payload: error
+//   };
+// };
 
-export { fetchManagers };
+// const fetchManagers = (storeService, dispatch) => () => {
+//   dispatch(managersRequested());
+//   storeService
+//     .getManagers()
+//     .then(data => dispatch(managersLoaded(data)))
+//     .catch(err => dispatch(managersError(err)));
+// };
+
+export { fetchManagers, fetchProducts, fetchClients };

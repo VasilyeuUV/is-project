@@ -106,56 +106,38 @@ export default class TestService {
     }
   ];
 
-  // getItems() {
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       if (Math.random() > 0.75) {
-  //         reject(new Error('Something bad happened'));
-  //       } else {
-  //         resolve(this.data);
-  //       }
-  //     }, 700);
-  //   });
-  // }
-
-  getManagers = () => {
+  getItems(data, transform) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (Math.random() > 0.99) {
           reject(new Error('Something bad happened'));
         } else {
-          resolve(this._managers.map(this._transformManager));
+          resolve(data.map(transform));
         }
       }, 700);
     });
+  }
+
+  getManagers = () => {
+    return this.getItems(this._managers, this._transformManager);
+    // return new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     if (Math.random() > 0.99) {
+    //       reject(new Error('Something bad happened'));
+    //     } else {
+    //       resolve(this._managers.map(this._transformManager));
+    //     }
+    //   }, 700);
+    // });
   };
 
-  // getManager = async id => {
-  //   const manager = await this.getResource(`/managers/${id}/`);
-  //   return this._transformManager(manager);
-  // };
-
-  getProducts = () => {
-    return new Promise(resolve => {
-      resolve(this._products.map(this._transformProduct).slice(0, 5));
-    });
+  getProsucts = () => {
+    return this.getItems(this._products, this._transformProduct);
   };
-
-  // getProduct = async id => {
-  //   const product = await this.getResource(`/products/${id}/`);
-  //   return this._transformProduct(product);
-  // };
 
   getClients = () => {
-    return new Promise(resolve => {
-      resolve(this._clients.map(this._transformClient).slice(0, 5));
-    });
+    return this.getItems(this._clients, this._transformClient);
   };
-
-  // getClient = async id => {
-  //   const client = await this.getResource(`/clients/${id}/`);
-  //   return this._transformClient(client);
-  // };
 
   _transformManager = manager => {
     return {
