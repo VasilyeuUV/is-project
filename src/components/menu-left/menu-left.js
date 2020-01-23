@@ -10,13 +10,19 @@ const MenuLeft = () => {
     <div className='menu-left d-flex'>
       <ul className='flex-column'>
         <li>
-          <Link to={menu.manager.path}>{menu.manager.names}</Link>
+          <h3>
+            <Link to={menu.manager.path}>{menu.manager.names}</Link>
+          </h3>
         </li>
         <li>
-          <Link to={menu.product.path}>{menu.product.names}</Link>
+          <h3>
+            <Link to={menu.product.path}>{menu.product.names}</Link>
+          </h3>
         </li>
         <li>
-          <Link to={menu.client.path}>{menu.client.names}</Link>
+          <h3>
+            <Link to={menu.client.path}>{menu.client.names}</Link>
+          </h3>
         </li>
       </ul>
     </div>

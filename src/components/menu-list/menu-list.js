@@ -26,22 +26,6 @@ const MenuList = ({ items }) => {
   );
 };
 
-// const MenuList = ({ managers }) => {
-//   // console.log({title});
-
-//   return (
-//     <ul className='list-group'>
-//       {managers.map(manager => {
-//         return (
-//           <li key={manager.id} className='list-group-item'>
-//             <MenuListItem manager={manager} />
-//           </li>
-//         );
-//       })}
-//     </ul>
-//   );
-// };
-
 class MenuListContainer extends Component {
   componentDidMount() {
     this.props.fetchManagers();

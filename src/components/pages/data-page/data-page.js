@@ -4,7 +4,7 @@ import './data-page.css';
 
 import MenuList from '../../menu-list';
 import SalesTable from '../../sales-table';
-import SalesTotalTable from '../../sales-total-table';
+//import SalesTotalTable from '../../sales-total-table';
 
 const DataPage = ({ title }) => {
   return (
@@ -18,7 +18,7 @@ const DataPage = ({ title }) => {
         </div>
         <div className='col-md-9 data-page-block'>
           <SalesTable />
-          <SalesTotalTable />
+          {/* <SalesTotalTable /> */}
         </div>
       </div>
     </React.Fragment>

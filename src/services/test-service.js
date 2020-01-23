@@ -182,7 +182,7 @@ export default class TestService {
   _transformSale = sale => {
     const tSale = {
       id: sale.id,
-      dtg: sale.dtg,
+      date: sale.dtg,
       count: 1,
       sum: sale.sum,
       manager: this._managers.find(manager => manager.id === sale.managerId),
