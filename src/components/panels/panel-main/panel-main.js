@@ -17,6 +17,11 @@ const PanelMain = () => {
       <Switch>
         {/* <Route path={menu.manager.path} component={DataPage} exact /> */}
         <Route
+          path='/'
+          render={({ title }) => <DataPage title={menu.manager.names} />}
+          exact
+        />
+        <Route
           path={menu.manager.path}
           render={({ title }) => <DataPage title={menu.manager.names} />}
         />

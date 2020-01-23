@@ -12,12 +12,16 @@ import MenuListItem from '../menu-list-item';
 
 import './menu-list.css';
 
-const MenuList = ({ items }) => {
+const MenuList = ({ items, onItemSelected }) => {
   return (
     <ul className='list-group'>
       {items.map(item => {
         return (
-          <li key={item.id} className='list-group-item'>
+          <li
+            key={item.id}
+            className='list-group-item'
+            onClick={() => onItemSelected(item.id)}
+          >
             <MenuListItem item={item} />
           </li>
         );
@@ -57,9 +61,6 @@ class MenuListContainer extends Component {
 
   render() {
     const { loading, error } = this.props;
-    const { managers } = this.props;
-    const { products } = this.props;
-    const { clients } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -69,12 +70,17 @@ class MenuListContainer extends Component {
       return <ErrorIndicator />;
     }
 
+    const { managers } = this.props;
     if (managers.length > 0) {
       return <MenuList items={managers} />;
     }
+
+    const { products } = this.props;
     if (products.length > 0) {
       return <MenuList items={products} />;
     }
+
+    const { clients } = this.props;
     if (clients.length > 0) {
       return <MenuList items={clients} />;
     }

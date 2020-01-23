@@ -18,7 +18,6 @@ class SalesTable extends Component {
   }
 
   renderRow = (item, idx) => {
-    console.log(item);
     const { id, product, count, sum, date, client, manager, filename } = item;
     return (
       <tr key={id}>
