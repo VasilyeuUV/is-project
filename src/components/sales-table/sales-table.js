@@ -4,14 +4,16 @@ import { connect } from 'react-redux';
 import './sales-table.css';
 
 import { withStoreService } from '../hoc';
+import { fetchSales } from '../../actions';
 
 class SalesTable extends Component {
   componentDidMount() {
-    const { storeService } = this.props;
-    const data = storeService.getSales();
-    console.log(data);
-    console.log(this.props);
+    // const { storeService } = this.props;
+    // const data = storeService.getSales();
+    // console.log(data);
+    // console.log(this.props);
 
+    this.props.fetchSales();
     //this.props.salesLoaded(data);
   }
 
@@ -61,14 +63,20 @@ const mapStateToProps = ({ sales }) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     salesLoaded: newSales => {
+//       dispatch({
+//         type: 'FETCH_SALES_SUCCESS',
+//         payload: newSales
+//       });
+//     }
+//   };
+// };
+
+const mapDispatchToProps = (dispatch, { storeService }) => {
   return {
-    salesLoaded: newSales => {
-      dispatch({
-        type: 'FETCH_SALES_SUCCESS',
-        payload: newSales
-      });
-    }
+    fetchSales: fetchSales(storeService, dispatch)
   };
 };
 
