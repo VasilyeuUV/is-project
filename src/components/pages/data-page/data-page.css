@@ -1,3 +1,5 @@
-/* .data-page{
-
-} */
+.data-page-block {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}

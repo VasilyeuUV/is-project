@@ -1,8 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './sales-table.css';
 
-const SalesTable = () => {
+const SalesTable = ({ items }) => {
+  const renderRow = (item, idx) => {
+    const { id, product, count, sum, date, client, manager, filename } = item;
+    return (
+      <tr key={id}>
+        <td>{idx + 1}</td>
+        <td>{product}</td>
+        <td>{count}</td>
+        <td>${sum}</td>
+        <td>{date}</td>
+        <td>{client}</td>
+        <td>{manager}</td>
+        <td>{filename}</td>
+      </tr>
+    );
+  };
+
   return (
     <div className='sales-table-block'>
       <table className='table'>
@@ -12,37 +29,24 @@ const SalesTable = () => {
             <th>Product</th>
             <th>Count</th>
             <th>Sum</th>
-            <th>Data</th>
+            <th>Date</th>
             <th>Client</th>
             <th>Manager</th>
             <th>File name</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Car</td>
-            <td>1</td>
-            <td>$40000</td>
-            <td>22.02.2019</td>
-            <td>Client15</td>
-            <td>Ivanov</td>
-            <td>Ivanov_22.02.2019.csv</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Pencil</td>
-            <td>5</td>
-            <td>$5</td>
-            <td>23.02.2019</td>
-            <td>Client2</td>
-            <td>Petrov</td>
-            <td>Petrov_23.02.2019.csv</td>
-          </tr>
-        </tbody>
+        <tbody>{items.map(renderRow)}</tbody>
       </table>
     </div>
   );
 };
 
-export default SalesTable;
+const mapStateToProps = ({ sales }) => {
+  return {
+    items: sales
+  };
+};
+
+const mapDispatchToProps = () => {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SalesTable);

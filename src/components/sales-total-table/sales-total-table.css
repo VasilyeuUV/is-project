@@ -6,4 +6,11 @@
     border: 1px solid darkgray;
     border-radius: 5px;
     margin: 3px 0px;
+    overflow: auto;
 }
+
+/* .sticky {
+    position: sticky;
+    top: 0;
+    bottom: 0;
+} */

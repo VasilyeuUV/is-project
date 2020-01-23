@@ -16,7 +16,7 @@ const DataPage = ({ title }) => {
         <div className='col-md-3'>
           <MenuList title={title} />
         </div>
-        <div className='col-md-9'>
+        <div className='col-md-9 data-page-block'>
           <SalesTable />
           <SalesTotalTable />
         </div>

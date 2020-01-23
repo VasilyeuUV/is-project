@@ -19,13 +19,36 @@ const initialState = {
   products: [],
   clients: [],
   loading: true,
-  error: null
+  error: null,
+  sales: [
+    {
+      id: 1,
+      date: '10.01.2020',
+      count: 1,
+      sum: 1111,
+      manager: 'Ivanov',
+      product: 'House',
+      client: 'Client_02',
+      filename: 'Ivanov_10.01.2020.csv'
+    },
+    {
+      id: 2,
+      date: '10.01.2020',
+      count: 1,
+      sum: 22222,
+      manager: 'Petrov',
+      product: 'Car',
+      client: 'Client_01',
+      filename: 'Petrov_10.01.2020.csv'
+    }
+  ]
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case managerActions.request:
       return {
+        ...state,
         managers: [],
         products: [],
         clients: [],
@@ -34,6 +57,7 @@ const reducer = (state = initialState, action) => {
       };
     case managerActions.success:
       return {
+        ...state,
         managers: action.payload,
         products: [],
         clients: [],
@@ -42,6 +66,7 @@ const reducer = (state = initialState, action) => {
       };
     case managerActions.failure:
       return {
+        ...state,
         managers: [],
         products: [],
         clients: [],
@@ -50,6 +75,7 @@ const reducer = (state = initialState, action) => {
       };
     case productActions.request:
       return {
+        ...state,
         managers: [],
         products: [],
         clients: [],
@@ -58,6 +84,7 @@ const reducer = (state = initialState, action) => {
       };
     case productActions.success:
       return {
+        ...state,
         managers: [],
         products: action.payload,
         clients: [],
@@ -66,6 +93,7 @@ const reducer = (state = initialState, action) => {
       };
     case productActions.failure:
       return {
+        ...state,
         managers: [],
         products: [],
         clients: [],
@@ -74,6 +102,7 @@ const reducer = (state = initialState, action) => {
       };
     case clientActions.request:
       return {
+        ...state,
         managers: [],
         products: [],
         clients: [],
@@ -82,6 +111,7 @@ const reducer = (state = initialState, action) => {
       };
     case clientActions.success:
       return {
+        ...state,
         managers: [],
         products: [],
         clients: action.payload,
@@ -90,6 +120,7 @@ const reducer = (state = initialState, action) => {
       };
     case clientActions.failure:
       return {
+        ...state,
         managers: [],
         products: [],
         clients: [],
