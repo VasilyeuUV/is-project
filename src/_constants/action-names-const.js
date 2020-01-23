@@ -16,4 +16,10 @@ const clientActions = {
   failure: 'FETCH_CLIENTS_FAILURE'
 };
 
-export { managerActions, productActions, clientActions };
+const saleActions = {
+  request: 'FETCH_SALES_REQUEST',
+  success: 'FETCH_SALES_SUCCESS',
+  failure: 'FETCH_SALES_FAILURE'
+};
+
+export { managerActions, productActions, clientActions, saleActions };
