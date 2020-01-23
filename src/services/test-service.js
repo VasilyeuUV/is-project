@@ -37,8 +37,8 @@ export default class TestService {
       dtg: '10.01.2020',
       sum: 1111,
       managerId: 1,
-      productId: 1,
-      clientId: 1,
+      productId: 2,
+      clientId: 3,
       fileNameId: 1
     },
     {
@@ -46,8 +46,8 @@ export default class TestService {
       dtg: '10.01.2020',
       sum: 22222,
       managerId: 2,
-      productId: 2,
-      clientId: 2,
+      productId: 3,
+      clientId: 4,
       fileNameId: 2
     },
     {
@@ -55,8 +55,8 @@ export default class TestService {
       dtg: '10.01.2020',
       sum: 3333,
       managerId: 3,
-      productId: 3,
-      clientId: 3,
+      productId: 4,
+      clientId: 1,
       fileNameId: 3
     },
     {
@@ -64,45 +64,45 @@ export default class TestService {
       dtg: '10.01.2020',
       sum: 4444,
       managerId: 4,
-      productId: 4,
-      clientId: 4,
+      productId: 1,
+      clientId: 2,
       fileNameId: 4
     },
     {
       id: 5,
       dtg: '11.01.2020',
       sum: 5555,
-      managerId: 1,
-      productId: 1,
-      clientId: 1,
-      fileNameId: 5
+      managerId: 4,
+      productId: 3,
+      clientId: 2,
+      fileNameId: 4
     },
     {
       id: 6,
       dtg: '11.01.2020',
       sum: 6666,
-      managerId: 2,
+      managerId: 3,
       productId: 2,
-      clientId: 2,
-      fileNameId: 6
+      clientId: 1,
+      fileNameId: 3
     },
     {
       id: 7,
       dtg: '11.01.2020',
       sum: 7777,
-      managerId: 3,
-      productId: 3,
-      clientId: 3,
-      fileNameId: 7
+      managerId: 2,
+      productId: 1,
+      clientId: 4,
+      fileNameId: 2
     },
     {
       id: 8,
       dtg: '11.01.2020',
       sum: 8888,
-      managerId: 4,
+      managerId: 1,
       productId: 4,
-      clientId: 4,
-      fileNameId: 8
+      clientId: 3,
+      fileNameId: 1
     }
   ];
 

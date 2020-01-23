@@ -5,16 +5,22 @@ import './sales-table.css';
 
 import { withStoreService } from '../hoc';
 import { fetchSales } from '../../actions';
+import menu from '../../_constants/menu-items-const';
 
 class SalesTable extends Component {
-  componentDidMount() {
-    // const { storeService } = this.props;
-    // const data = storeService.getSales();
-    // console.log(data);
-    // console.log(this.props);
+  state = {
+    title: null,
+    item: null
+  };
 
+  componentDidMount() {
     this.props.fetchSales();
-    //this.props.salesLoaded(data);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.itemId !== prevProps.itemId) {
+      this.props.fetchSales();
+    }
   }
 
   renderRow = (item, idx) => {
@@ -34,7 +40,28 @@ class SalesTable extends Component {
   };
 
   render() {
-    const { items } = this.props;
+    console.log(this.props);
+    const { title, items } = this.props;
+    const itemId = this.props.item;
+    let lst = items;
+    if (itemId) {
+      switch (title) {
+        case menu.manager.names:
+          lst = items.filter(item => item.manager.id === itemId);
+          break;
+        case menu.product.names:
+          lst = items.filter(item => item.product.id === itemId);
+          break;
+        case menu.client.names:
+          lst = items.filter(item => item.client.id === itemId);
+          break;
+        default:
+          break;
+      }
+    }
+
+    //const { items } = this.props;
+    //console.log(lst);
     return (
       <div className='sales-table-block'>
         <table className='table'>
@@ -50,7 +77,7 @@ class SalesTable extends Component {
               <th>File name</th>
             </tr>
           </thead>
-          <tbody>{items.map(this.renderRow)}</tbody>
+          <tbody>{lst.map(this.renderRow)}</tbody>
         </table>
       </div>
     );
@@ -62,17 +89,6 @@ const mapStateToProps = ({ sales }) => {
     items: sales
   };
 };
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     salesLoaded: newSales => {
-//       dispatch({
-//         type: 'FETCH_SALES_SUCCESS',
-//         payload: newSales
-//       });
-//     }
-//   };
-// };
 
 const mapDispatchToProps = (dispatch, { storeService }) => {
   return {

@@ -14,9 +14,10 @@ class DataPage extends Component {
     selectedItem: null
   };
 
-  onItemSelected = id => {
+  onItemSelected = (title, item) => {
     this.setState({
-      selectedItem: id
+      title: title,
+      selectedItem: item
     });
   };
 
@@ -32,7 +33,10 @@ class DataPage extends Component {
             <MenuList title={title} onItemSelected={this.onItemSelected} />
           </div>
           <div className='col-md-9 data-page-block'>
-            <SalesTable itemId={this.state.selectedItem} />
+            <SalesTable
+              title={this.state.title}
+              item={this.state.selectedItem}
+            />
             {/* <SalesTotalTable /> */}
           </div>
         </div>

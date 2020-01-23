@@ -12,7 +12,7 @@ import MenuListItem from '../menu-list-item';
 
 import './menu-list.css';
 
-const MenuList = ({ items, onItemSelected }) => {
+const MenuList = ({ title, items, onItemSelected }) => {
   return (
     <ul className='list-group'>
       {items.map(item => {
@@ -20,7 +20,7 @@ const MenuList = ({ items, onItemSelected }) => {
           <li
             key={item.id}
             className='list-group-item'
-            onClick={() => onItemSelected(item.id)}
+            onClick={() => onItemSelected(title, item.id)}
           >
             <MenuListItem item={item} />
           </li>
@@ -60,7 +60,7 @@ class MenuListContainer extends Component {
   }
 
   render() {
-    const { loading, error } = this.props;
+    const { title, loading, error } = this.props;
 
     if (loading) {
       return <Spinner />;
@@ -72,19 +72,37 @@ class MenuListContainer extends Component {
 
     const { managers } = this.props;
     if (managers.length > 0) {
-      return <MenuList items={managers} />;
+      return (
+        <MenuList
+          title={title}
+          items={managers}
+          onItemSelected={this.props.onItemSelected}
+        />
+      );
     }
 
     const { products } = this.props;
     if (products.length > 0) {
-      return <MenuList items={products} />;
+      return (
+        <MenuList
+          title={title}
+          items={products}
+          onItemSelected={this.props.onItemSelected}
+        />
+      );
     }
 
     const { clients } = this.props;
     if (clients.length > 0) {
-      return <MenuList items={clients} />;
+      return (
+        <MenuList
+          title={title}
+          items={clients}
+          onItemSelected={this.props.onItemSelected}
+        />
+      );
     }
-    return <MenuList items={[]} />;
+    return <Spinner />;
   }
 }
 
