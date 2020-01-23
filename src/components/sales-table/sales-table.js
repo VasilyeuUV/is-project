@@ -10,6 +10,9 @@ class SalesTable extends Component {
     const { storeService } = this.props;
     const data = storeService.getSales();
     console.log(data);
+    console.log(this.props);
+
+    //this.props.salesLoaded(data);
   }
 
   renderRow = (item, idx) => {
@@ -58,7 +61,16 @@ const mapStateToProps = ({ sales }) => {
   };
 };
 
-const mapDispatchToProps = () => {};
+const mapDispatchToProps = dispatch => {
+  return {
+    salesLoaded: newSales => {
+      dispatch({
+        type: 'FETCH_SALES_SUCCESS',
+        payload: newSales
+      });
+    }
+  };
+};
 
 export default withStoreService()(
   connect(mapStateToProps, mapDispatchToProps)(SalesTable)

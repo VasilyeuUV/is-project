@@ -94,7 +94,7 @@ class MenuListContainer extends Component {
     if (clients.length > 0) {
       return <MenuList items={clients} />;
     }
-    return <MenuList items={null} />;
+    return <MenuList items={[]} />;
   }
 }
 
