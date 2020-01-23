@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 
 import './sales-table.css';
 
+import { withStoreService } from '../hoc';
+
 class SalesTable extends Component {
-  //= ({ items }) => {
+  componentDidMount() {}
 
   renderRow = (item, idx) => {
     const { id, product, count, sum, date, client, manager, filename } = item;
@@ -54,4 +56,6 @@ const mapStateToProps = ({ sales }) => {
 
 const mapDispatchToProps = () => {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SalesTable);
+export default withStoreService()(
+  connect(mapStateToProps, mapDispatchToProps)(SalesTable)
+);
