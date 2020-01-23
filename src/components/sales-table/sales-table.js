@@ -18,17 +18,18 @@ class SalesTable extends Component {
   }
 
   renderRow = (item, idx) => {
+    console.log(item);
     const { id, product, count, sum, date, client, manager, filename } = item;
     return (
       <tr key={id}>
         <td>{idx + 1}</td>
-        <td>{product}</td>
+        <td>{product.name}</td>
         <td>{count}</td>
         <td>${sum}</td>
         <td>{date}</td>
-        <td>{client}</td>
-        <td>{manager}</td>
-        <td>{filename}</td>
+        <td>{client.name}</td>
+        <td>{manager.name}</td>
+        <td>{filename.name}</td>
       </tr>
     );
   };

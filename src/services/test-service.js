@@ -131,6 +131,12 @@ export default class TestService {
     // });
   };
 
+  getManager = id => {
+    const managers = this.getManagers();
+    console.log(managers);
+    return managers.find(manager => manager.id === id);
+  };
+
   getProsucts = () => {
     return this.getItems(this._products, this._transformProduct);
   };
@@ -174,15 +180,18 @@ export default class TestService {
   };
 
   _transformSale = sale => {
-    return {
+    const tSale = {
       id: sale.id,
       dtg: sale.dtg,
       count: 1,
       sum: sale.sum,
-      manager: sale.managerId,
-      product: sale.productId,
-      client: sale.clientId,
-      filename: sale.fileNameId
+      manager: this._managers.find(manager => manager.id === sale.managerId),
+      product: this._products.find(product => product.id === sale.productId),
+      client: this._clients.find(client => client.id === sale.clientId),
+      filename: this._filenames.find(
+        filename => filename.id === sale.fileNameId
+      )
     };
+    return tSale;
   };
 }
