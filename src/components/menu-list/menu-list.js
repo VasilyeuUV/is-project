@@ -32,7 +32,8 @@ const MenuList = ({ title, items, onItemSelected }) => {
 
 class MenuListContainer extends Component {
   componentDidMount() {
-    this.props.fetchManagers();
+    //this.props.fetchManagers();
+    this.updateData(this.props.title);
   }
 
   componentDidUpdate(prevProps) {

@@ -6,11 +6,6 @@ import './panel-main.css';
 import menu from '../../../_constants/menu-items-const';
 import DataPage from '../../pages/data-page';
 
-//import { ManagersPage, ProductsPage, ClientsPage } from '../../pages';
-
-// import ErrorBoundry from '../error-boundry';
-// import ManagersStoreService from '../../services/managersstore-service';
-
 const PanelMain = () => {
   return (
     <section className='col-md-9 panel-main'>
