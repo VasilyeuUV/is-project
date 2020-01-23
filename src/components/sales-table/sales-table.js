@@ -6,7 +6,11 @@ import './sales-table.css';
 import { withStoreService } from '../hoc';
 
 class SalesTable extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    const { storeService } = this.props;
+    const data = storeService.getSales();
+    console.log(data);
+  }
 
   renderRow = (item, idx) => {
     const { id, product, count, sum, date, client, manager, filename } = item;

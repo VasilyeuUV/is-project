@@ -139,6 +139,10 @@ export default class TestService {
     return this.getItems(this._clients, this._transformClient);
   };
 
+  getSales = () => {
+    return this.getItems(this._sales, this._transformSale);
+  };
+
   _transformManager = manager => {
     return {
       id: manager.id,
@@ -166,6 +170,19 @@ export default class TestService {
       id: filename.id,
       name: filename.name,
       dtg: filename.dtg
+    };
+  };
+
+  _transformSale = sale => {
+    return {
+      id: sale.id,
+      dtg: sale.dtg,
+      count: 1,
+      sum: sale.sum,
+      manager: sale.managerId,
+      product: sale.productId,
+      client: sale.clientId,
+      filename: sale.fileNameId
     };
   };
 }

@@ -13,7 +13,6 @@ import MenuListItem from '../menu-list-item';
 import './menu-list.css';
 
 const MenuList = ({ items }) => {
-  console.log(items);
   return (
     <ul className='list-group'>
       {items.map(item => {
@@ -56,9 +55,6 @@ class MenuListContainer extends Component {
   }
 
   updateData(title) {
-    // console.log(title);
-    // console.log(menu.manager.names);
-
     switch (title) {
       case menu.manager.names:
         this.props.fetchManagers();
@@ -76,8 +72,6 @@ class MenuListContainer extends Component {
   }
 
   render() {
-    console.log(this.props);
-
     const { loading, error } = this.props;
     const { managers } = this.props;
     const { products } = this.props;
