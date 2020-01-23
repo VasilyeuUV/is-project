@@ -14,6 +14,17 @@ class DataPage extends Component {
     selectedItem: null
   };
 
+  componentDidMount() {}
+
+  componentDidUpdate(prevProps) {
+    const title = this.props.title;
+    if (title !== prevProps.title) {
+      this.setState({
+        selectedItem: null
+      });
+    }
+  }
+
   onItemSelected = (title, item) => {
     this.setState({
       title: title,
