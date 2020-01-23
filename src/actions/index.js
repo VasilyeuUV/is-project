@@ -1,6 +1,7 @@
 import { fetchManagers } from './manager-actions';
 import { fetchProducts } from './product-actions';
 import { fetchClients } from './client-actions';
+import { fetchSales } from './sale-actions';
 
 // import { managerActions } from '../_constants';
 
@@ -32,4 +33,4 @@ import { fetchClients } from './client-actions';
 //     .catch(err => dispatch(managersError(err)));
 // };
 
-export { fetchManagers, fetchProducts, fetchClients };
+export { fetchManagers, fetchProducts, fetchClients, fetchSales };
